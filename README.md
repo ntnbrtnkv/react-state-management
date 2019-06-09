@@ -1,4 +1,4 @@
-# State management TodoMVP
+# State management TodoMVC
 
 This repo contains examples of state management approaches for React applications.
 
