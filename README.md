@@ -8,11 +8,11 @@ Currently presented examples with:
 * MobX
 * Context
 
-## Run
+## Get started
 
 To run any of these examples follow this steps:
 
-1. Clone this repo
+1. Clone this repo (once)
 
     ```bash
     git clone git@github.com:ntnbrtnkv/react-state-management.git

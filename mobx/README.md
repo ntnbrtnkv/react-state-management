@@ -4,15 +4,13 @@ This repository provides a reference implementation of the [TodoMVC](http://todo
 
 ## Running the example
 
-```
-npm install
-npm start
-open http://localhost:3000
+```bash
+yarn
+yarn start
+open http://localhost:3001
 ```
 
 The example requires node 4.0 or higher
-
-![TodoMVC](devtools.gif)
 
 ## Changing the example
 
