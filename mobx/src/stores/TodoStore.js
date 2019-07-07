@@ -33,6 +33,7 @@ export default class TodoStore {
 		this.todos.push(new TodoModel(this, Utils.uuid(), title, false));
 	}
 
+	// * Action where we simple mutate global state
 	@action
 	toggleAll (checked) {
 		this.todos.forEach(

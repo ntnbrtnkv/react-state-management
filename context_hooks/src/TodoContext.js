@@ -7,6 +7,7 @@ const TOGGLE_TODO = 'TOGGLE_TODO'
 const COMPLETE_ALL_TODOS = 'COMPLETE_ALL_TODOS'
 const CLEAR_COMPLETED = 'CLEAR_COMPLETED'
 
+// * Context for providing app data
 const TodosContext = createContext();
 
 const initialState = [
@@ -18,10 +19,12 @@ const initialState = [
 ];
 
 const TodosProvider = (props) => {
+  // * useReducer for complex state like global application state
   const [todos, dispatch] = useReducer(todosReducer, initialState);
 
   const actions = useActions(dispatch);
 
+  // * Provide state and methods to mutate it
   return <TodosContext.Provider value={{todos, actions}} {...props} />
 }
 
