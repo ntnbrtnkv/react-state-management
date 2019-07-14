@@ -34,6 +34,12 @@ export default class TodoOverview extends React.Component {
 		</section>
 	}
 
+	// * Action inside TodoStore
+	toggleAll = (event) => {
+		var checked = event.target.checked;
+		this.props.todoStore.toggleAll(checked);
+	};
+
 	// * Computed value, try to comment next line and watch console
 	@computed
 	get visibleTodos() {
@@ -49,12 +55,6 @@ export default class TodoOverview extends React.Component {
 			}
 		});
 	}
-
-	// * Action inside TodoStore
-	toggleAll = (event) => {
-		var checked = event.target.checked;
-		this.props.todoStore.toggleAll(checked);
-	};
 }
 
 
