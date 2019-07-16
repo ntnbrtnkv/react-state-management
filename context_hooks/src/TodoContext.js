@@ -74,6 +74,7 @@ function todosReducer(state = initialState, action) {
   }
 }
 
+// * Hook to 'bind' dispatch
 const useActions = (dispatch) => {
   const addTodo = text => dispatch({type: ADD_TODO, text});
 
