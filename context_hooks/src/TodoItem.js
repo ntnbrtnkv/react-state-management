@@ -6,8 +6,8 @@ import { TodosContext } from "./TodoContext";
 
 export default class TodoItem extends Component {
   static propTypes = {
-    todo: PropTypes.object.isRequired,
-  }
+    todo: PropTypes.object.isRequired
+  };
 
   static contextType = TodosContext;
 
@@ -30,7 +30,9 @@ export default class TodoItem extends Component {
 
   render() {
     const { todo } = this.props;
-    const { actions: {toggleTodo, deleteTodo} } = this.context;
+    const {
+      actions: { toggleTodo, deleteTodo }
+    } = this.context;
 
     let element;
     if (this.state.editing) {

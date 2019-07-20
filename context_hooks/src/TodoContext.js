@@ -1,11 +1,11 @@
 import React, { createContext, useReducer } from "react";
 
-const ADD_TODO = 'ADD_TODO'
-const DELETE_TODO = 'DELETE_TODO'
-const EDIT_TODO = 'EDIT_TODO'
-const TOGGLE_TODO = 'TOGGLE_TODO'
-const COMPLETE_ALL_TODOS = 'COMPLETE_ALL_TODOS'
-const CLEAR_COMPLETED = 'CLEAR_COMPLETED'
+const ADD_TODO = "ADD_TODO";
+const DELETE_TODO = "DELETE_TODO";
+const EDIT_TODO = "EDIT_TODO";
+const TOGGLE_TODO = "TOGGLE_TODO";
+const COMPLETE_ALL_TODOS = "COMPLETE_ALL_TODOS";
+const CLEAR_COMPLETED = "CLEAR_COMPLETED";
 
 // * 4. Context for providing app data
 const TodosContext = createContext();
@@ -18,15 +18,15 @@ const initialState = [
   }
 ];
 
-const TodosProvider = (props) => {
+const TodosProvider = props => {
   // * 5. useReducer for complex state like global application state
   const [todos, dispatch] = useReducer(todosReducer, initialState);
 
   const actions = useActions(dispatch);
 
   // * 6. Provide state and methods to mutate it
-  return <TodosContext.Provider value={{todos, actions}} {...props} />
-}
+  return <TodosContext.Provider value={{ todos, actions }} {...props} />;
+};
 
 // * 7. Reducer like from Redux
 function todosReducer(state = initialState, action) {
@@ -39,55 +39,49 @@ function todosReducer(state = initialState, action) {
           completed: false,
           text: action.text
         }
-      ]
+      ];
 
     case DELETE_TODO:
-      return state.filter(todo =>
-        todo.id !== action.id
-      )
+      return state.filter(todo => todo.id !== action.id);
 
     case EDIT_TODO:
       return state.map(todo =>
-        todo.id === action.id ?
-          { ...todo, text: action.text } :
-          todo
-      )
+        todo.id === action.id ? { ...todo, text: action.text } : todo
+      );
 
     case TOGGLE_TODO:
       return state.map(todo =>
-        todo.id === action.id ?
-          { ...todo, completed: !todo.completed } :
-          todo
-      )
+        todo.id === action.id ? { ...todo, completed: !todo.completed } : todo
+      );
 
     case COMPLETE_ALL_TODOS:
-      const areAllMarked = state.every(todo => todo.completed)
+      const areAllMarked = state.every(todo => todo.completed);
       return state.map(todo => ({
         ...todo,
         completed: !areAllMarked
-      }))
+      }));
 
     case CLEAR_COMPLETED:
-      return state.filter(todo => todo.completed === false)
+      return state.filter(todo => todo.completed === false);
 
     default:
-      return state
+      return state;
   }
 }
 
 // * 8. Hook to 'bind' dispatch
-const useActions = (dispatch) => {
-  const addTodo = text => dispatch({type: ADD_TODO, text});
+const useActions = dispatch => {
+  const addTodo = text => dispatch({ type: ADD_TODO, text });
 
-  const deleteTodo = id => dispatch({type: DELETE_TODO, id});
+  const deleteTodo = id => dispatch({ type: DELETE_TODO, id });
 
-  const editTodo = (id, text) => dispatch({type: EDIT_TODO, id, text});
+  const editTodo = (id, text) => dispatch({ type: EDIT_TODO, id, text });
 
-  const toggleTodo = id => dispatch({type: TOGGLE_TODO, id});
+  const toggleTodo = id => dispatch({ type: TOGGLE_TODO, id });
 
-  const toggleAllTodo = () => dispatch({type: COMPLETE_ALL_TODOS});
+  const toggleAllTodo = () => dispatch({ type: COMPLETE_ALL_TODOS });
 
-  const clearCompleted = () => dispatch({type: CLEAR_COMPLETED});
+  const clearCompleted = () => dispatch({ type: CLEAR_COMPLETED });
 
   return {
     addTodo,
@@ -96,7 +90,7 @@ const useActions = (dispatch) => {
     toggleTodo,
     toggleAllTodo,
     clearCompleted
-  }
-}
+  };
+};
 
 export { TodosContext, TodosProvider };

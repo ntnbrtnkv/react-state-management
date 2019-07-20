@@ -16,7 +16,7 @@ const MainSection = () => {
 
   const todosCount = todos.length;
   const completedCount = todos.filter(({ completed }) => completed).length;
-  
+
   // * 3. Compute visible in place
   let visibleTodos;
   switch (visibilityFilter) {
