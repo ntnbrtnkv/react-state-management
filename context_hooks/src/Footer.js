@@ -29,6 +29,7 @@ const Footer = ({
             <a
               className={classnames({ selected: filter === visibilityFilter })}
               style={{ cursor: "pointer" }}
+              // * 1. Call function on click
               onClick={() => setFilter(filter)}
             >
               {FILTER_TITLES[filter]}

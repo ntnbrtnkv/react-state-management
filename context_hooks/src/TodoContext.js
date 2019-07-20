@@ -7,7 +7,7 @@ const TOGGLE_TODO = 'TOGGLE_TODO'
 const COMPLETE_ALL_TODOS = 'COMPLETE_ALL_TODOS'
 const CLEAR_COMPLETED = 'CLEAR_COMPLETED'
 
-// * Context for providing app data
+// * 4. Context for providing app data
 const TodosContext = createContext();
 
 const initialState = [
@@ -19,15 +19,16 @@ const initialState = [
 ];
 
 const TodosProvider = (props) => {
-  // * useReducer for complex state like global application state
+  // * 5. useReducer for complex state like global application state
   const [todos, dispatch] = useReducer(todosReducer, initialState);
 
   const actions = useActions(dispatch);
 
-  // * Provide state and methods to mutate it
+  // * 6. Provide state and methods to mutate it
   return <TodosContext.Provider value={{todos, actions}} {...props} />
 }
 
+// * 7. Reducer like from Redux
 function todosReducer(state = initialState, action) {
   switch (action.type) {
     case ADD_TODO:
@@ -74,7 +75,7 @@ function todosReducer(state = initialState, action) {
   }
 }
 
-// * Hook to 'bind' dispatch
+// * 8. Hook to 'bind' dispatch
 const useActions = (dispatch) => {
   const addTodo = text => dispatch({type: ADD_TODO, text});
 

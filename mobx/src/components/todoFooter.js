@@ -1,10 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {observer} from 'mobx-react';
-import {action} from 'mobx';
+import {action, configure} from 'mobx';
 import {pluralize} from '../utils';
 import { ALL_TODOS, ACTIVE_TODOS, COMPLETED_TODOS } from '../constants';
 
+// * 7. Enforce changing state only from @actions
+// configure({
+// 	enforceActions: true
+// });
+
+// * 2. Declare, that our class is interested in stores updates
 @observer
 export default class TodoFooter extends React.Component {
 	render() {
@@ -36,6 +42,7 @@ export default class TodoFooter extends React.Component {
 		);
 	}
 
+	// * 1. View store is just a prop
 	renderFilterLink(filterName, caption) {
 		return (
 			<li>

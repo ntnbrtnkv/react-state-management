@@ -2,7 +2,6 @@ import {observable, computed, reaction, action} from 'mobx';
 import TodoModel from '../models/TodoModel'
 import * as Utils from '../utils';
 
-
 export default class TodoStore {
 	@observable todos = [];
 
@@ -34,7 +33,7 @@ export default class TodoStore {
 	}
 
 	// * Action where we simple mutate global state
-	@action
+	@action('toggle all')
 	toggleAll (checked) {
 		this.todos.forEach(
 			todo => todo.completed = checked

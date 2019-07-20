@@ -5,10 +5,10 @@ import { TodosContext } from "./TodoContext";
 import { SHOW_ALL, SHOW_COMPLETED, SHOW_ACTIVE } from "./TodoFilters";
 
 const MainSection = () => {
-  // * useState for simple component state
+  // * 2. useState for simple component state
   const [visibilityFilter, setFilter] = useState(SHOW_ALL);
 
-  // * Get state and methods to change it
+  // * 9. Get state and methods to change it
   const {
     todos,
     actions: { toggleAllTodo, clearCompleted }
@@ -16,6 +16,8 @@ const MainSection = () => {
 
   const todosCount = todos.length;
   const completedCount = todos.filter(({ completed }) => completed).length;
+  
+  // * 3. Compute visible in place
   let visibleTodos;
   switch (visibilityFilter) {
     case SHOW_ALL:

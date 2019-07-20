@@ -4,7 +4,7 @@ import {
   SHOW_ACTIVE
 } from "../constants/TodoFilters"
 
-// * Get todos from redux store
+// * 8. Get todos from redux store by filter
 export const getVisibleTodos = ({ todos, visibilityFilter }) => {
   switch (visibilityFilter) {
     case SHOW_ALL:

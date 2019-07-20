@@ -6,7 +6,7 @@ import { ACTIVE_TODOS, COMPLETED_TODOS } from '../constants';
 import TodoItem from './todoItem';
 import { computed } from 'mobx';
 
-// * Observer is a reaction - update virtual DOM on store changes
+// * 4. Observer is a reaction - update virtual DOM on store changes
 @observer
 export default class TodoOverview extends React.Component {
 	render() {
@@ -23,6 +23,7 @@ export default class TodoOverview extends React.Component {
 			/>
 			<label htmlFor="toggle-all"></label>
 			<ul className="todo-list">
+				{/* // * 6. Use computed value */}
 				{this.visibleTodos.map(todo =>
 					(<TodoItem
 						key={todo.id}
@@ -40,7 +41,7 @@ export default class TodoOverview extends React.Component {
 		this.props.todoStore.toggleAll(checked);
 	};
 
-	// * Computed value, try to comment next line and watch console
+	// * 5. Computed value, try to comment next line and watch console
 	@computed
 	get visibleTodos() {
 		console.log(`Compute visible todos: ${this.props.viewStore.todoFilter}`);
