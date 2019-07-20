@@ -1,10 +1,10 @@
-import {observable, decorate} from 'mobx';
-import { ALL_TODOS } from '../constants';
+import { observable, decorate } from "mobx";
+import { ALL_TODOS } from "../constants";
 
 // * 3. Filter - observable store value
 export default class ViewStore {
-	@observable todoBeingEdited = null;
-	@observable todoFilter = ALL_TODOS;
+  @observable todoBeingEdited = null;
+  @observable todoFilter = ALL_TODOS;
 }
 
 // * If no decorators available
